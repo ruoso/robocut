@@ -145,7 +145,7 @@ void MainWindow::loadFile()
 	// Geqt size from SVG. TODO: Sanity check.
 	// Also TODO: This won't handle offset viewboxes... need to get the offset and subtract it from
 	// all the objects.
-	mediaSize = rend.viewBoxF().size() * 25.4 / 96.0;
+	mediaSize = rend.viewBoxF().size();// * 25.4 / 96.0;
 
 	double ppm = 96.0/25.4; // Pixels per mm.
 
@@ -156,7 +156,7 @@ void MainWindow::loadFile()
 
 	rend.render(&p);
 
-	PathSorter pathsort(pg.paths(), mediaSize.height());
+	PathSorter pathsort(pg.paths(), mediaSize.height()+30);
 	paths = pathsort.UnSort();
 	//paths = pathsort.Sort();
 	//paths = pathsort.TspSort();

@@ -420,9 +420,11 @@ Error Cut(CutParams p)
 	e = UsbReceive(handle, resp, 10000); // Allow 10s. Seems reasonable.
 	if (!e) goto error;
 
-	if (resp != "    0,    0\x03")
+
+	if (resp != "    0,    0\x03" && resp != "    7,   -6\x03" )
 	{
-		e = Error("Invalid response from plotter.");
+		std::cerr << "<<" << resp << ">>" << std::endl;
+		e = Error("Invalid response from plotter." + resp);
 		goto error;
 	}
 
