@@ -156,7 +156,7 @@ void MainWindow::loadFile()
 
 	rend.render(&p);
 
-	PathSorter pathsort(pg.paths(), mediaSize.height()+30);
+	PathSorter pathsort(pg.paths(), mediaSize.height());
 	paths = pathsort.UnSort();
 	//paths = pathsort.Sort();
 	//paths = pathsort.TspSort();
