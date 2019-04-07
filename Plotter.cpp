@@ -458,13 +458,15 @@ Error Cut(CutParams p)
 			string searchregchar = "23,";
 			int regw = lroundl(p.regwidth * 20.0);
 			int regl = lroundl(p.regheight * 20.0);
-			e = UsbSend(handle, "TB50,381\x03"); //only with registration (it was TB50,1) ???
+			int regow = ProgramOptions::Instance().getRegOriginWidth();
+			int regoh = ProgramOptions::Instance().getRegOriginHeight();
+			e = UsbSend(handle, "TB51,400\x03"); //only with registration (it was TB50,1) ???
 			if (!e) goto error;
 			
 			if (p.regsearch)
 				searchregchar ="123,";
 			
-			regmarkstr <<  "TB99\x03TB55,1\x03TB" + searchregchar + ItoS(regw) + "," + ItoS(regl) + "\x03";
+			regmarkstr <<  "TB55,1\x03TB" + searchregchar + ItoS(regw) + "," + ItoS(regl) + "," + ItoS(regow) + "," + ItoS(regoh)  + "\x03";
 			
 			cout << "Registration mark string: " << regmarkstr.str() << endl;
 			

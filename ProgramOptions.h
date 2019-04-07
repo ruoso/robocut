@@ -46,8 +46,8 @@ private:
 	int regMark;
 	double regDimensionWidth;
 	double regDimensionHeight;
-	double regOriginWidth;
-	double regOriginHeight;
+	double regOriginWidth = 118;
+	double regOriginHeight = 118;
 	QString version;
 	int vendorUSB_ID;
 	int productUSB_ID;
